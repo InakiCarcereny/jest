@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type Skills = {
   skills?: string[];
 };
 
-export function Skills(props: Skills) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export function Skills(props: Skills): JSX.Element {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const { skills } = props;
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoggedIn(true);
+    }, 1000);
+  }, []);
+
   return (
     <>
       <ul>
