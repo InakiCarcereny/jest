@@ -17,6 +17,14 @@ describe("<Form />", () => {
     const pElement = screen.getByText("This is a paragraph");
     expect(pElement).toBeInTheDocument();
 
+    const pElementRegex = screen.getByText(/This is a paragraph/i);
+    expect(pElementRegex).toBeInTheDocument();
+
+    const pElementFunction = screen.getByText((content: string) =>
+      content.includes("This is a paragraph")
+    );
+    expect(pElementFunction).toBeInTheDocument();
+
     const nameElement = screen.getByRole("textbox", { name: "Name" });
     expect(nameElement).toBeInTheDocument();
 
